@@ -20,7 +20,6 @@
 #include "window.hpp"
 
 #include <QApplication>
-#include <QQmlApplicationEngine>
 
 using namespace std;
 
@@ -28,8 +27,8 @@ int main(int argc,char* argv[])
 {
     QApplication a(argc,argv);
     
-    QQmlApplicationEngine engine;
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+    lliurex::dls::Window window;
+    window.show();
     
     return a.exec();
 }

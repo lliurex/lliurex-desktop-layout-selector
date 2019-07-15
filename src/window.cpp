@@ -24,6 +24,7 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 #include <QQmlContext>
+#include <QLabel>
 
 #include <iostream>
 
@@ -33,20 +34,15 @@ using namespace std;
 Window::Window() : QWidget()
 {
     QVBoxLayout* vbox = new QVBoxLayout();
-    QHBoxLayout* hbox = new QHBoxLayout();
     
-    QPushButton* btnApply = new QPushButton("Apply");
-    QPushButton* btnCancel = new QPushButton("Cancel");
-    
-    hbox->addWidget(btnApply);
-    hbox->addWidget(btnCancel);
+    vbox->addWidget(new QLabel("Aspecto visual"));
     
     qmlWidget = new QQuickWidget();
+    qmlWidget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     
     QList<QObject*> data;
     
     QVariantList args;
-    //KCMLookandFeel* kcm = new KCMLookandFeel(nullptr,args);
     
     data.append(new LNFPackage("Default","/usr/share/plasma/look-and-feel/lliurex-desktop"));
     data.append(new LNFPackage("Classic","/usr/share/plasma/look-and-feel/lliurex-desktop-classic"));
@@ -54,11 +50,16 @@ Window::Window() : QWidget()
     QQmlContext* ctxt = qmlWidget->rootContext();
     ctxt->setContextProperty("kcm", QVariant::fromValue(data));
     
-    qmlWidget->setClearColor(QColor(0xf1,0xf2,0xf3));
+    qmlWidget->setClearColor(QColor(0x32,0xf9,0xf9));
     qmlWidget->setSource(QUrl(QStringLiteral("qrc:/main.qml")));
+    qmlWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
     
     vbox->addWidget(qmlWidget);
-    vbox->addLayout(hbox);
+    vbox->setAlignment(Qt::AlignHCenter);
+    
+    dlg = new QDialogButtonBox(QDialogButtonBox::Apply);
+    connect(dlg, &QDialogButtonBox::clicked, this, &Window::clicked);
+    vbox->addWidget(dlg);
     
     setLayout(vbox);
 }
@@ -66,3 +67,11 @@ Window::Window() : QWidget()
 Window::~Window()
 {
 }
+
+void Window::clicked(QAbstractButton* button)
+{
+    if (dlg->buttonRole(button)==QDialogButtonBox::ApplyRole) {
+        clog<<"Apply"<<endl;
+    }
+}
+

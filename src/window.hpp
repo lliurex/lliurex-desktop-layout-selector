@@ -22,6 +22,7 @@
 
 #include <QWidget>
 #include <QQuickWidget>
+#include <QDialogButtonBox>
 
 namespace lliurex
 {
@@ -36,9 +37,8 @@ namespace lliurex
             
             signals:
                 
-                void onNameChanged();
-                
-                void onPathChanged();
+            void onNameChanged();
+            void onPathChanged();
                 
             public:
             
@@ -59,6 +59,11 @@ namespace lliurex
             private:
             
             QQuickWidget* qmlWidget;
+            QDialogButtonBox* dlg;
+            
+            private slots:
+            
+            void clicked(QAbstractButton* button);
             
             public:
             

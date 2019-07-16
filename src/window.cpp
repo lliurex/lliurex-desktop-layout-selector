@@ -24,6 +24,7 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 #include <QQmlContext>
+#include <QQuickItem>
 #include <QLabel>
 
 #include <iostream>
@@ -49,6 +50,7 @@ Window::Window() : QWidget()
     
     QQmlContext* ctxt = qmlWidget->rootContext();
     ctxt->setContextProperty("kcm", QVariant::fromValue(data));
+    ctxt->setContextProperty("kcm.selection",32);
     
     qmlWidget->setClearColor(QColor(0x32,0xf9,0xf9));
     qmlWidget->setSource(QUrl(QStringLiteral("qrc:/main.qml")));
@@ -72,6 +74,18 @@ void Window::clicked(QAbstractButton* button)
 {
     if (dlg->buttonRole(button)==QDialogButtonBox::ApplyRole) {
         clog<<"Apply"<<endl;
+        
+        QQuickItem* root = qmlWidget->rootObject();
+        
+        if (root!=nullptr) {
+            QQuickItem* selector = root->findChild<QQuickItem*>("lliurex.lnf.selector");
+            
+            if (selector!=nullptr) {
+                QVariant value = selector->property("currentIndex");
+                qDebug()<<value;
+            }
+        }
+        
     }
 }
 

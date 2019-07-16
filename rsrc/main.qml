@@ -11,6 +11,7 @@ Rectangle {
     height: 500
     
     ListView {
+        objectName: "lliurex.lnf.selector"
         id: packages
         width: parent.width-5; height: parent.height-5
         anchors.horizontalCenter: parent.horizontalCenter

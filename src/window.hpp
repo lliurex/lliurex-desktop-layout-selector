@@ -20,6 +20,8 @@
 #ifndef LLIUREX_DLS_WINDOW
 #define LLIUREX_DLS_WINDOW
 
+#include "lnf.hpp"
+
 #include <QWidget>
 #include <QQuickWidget>
 #include <QDialogButtonBox>
@@ -60,6 +62,7 @@ namespace lliurex
             
             QQuickWidget* qmlWidget;
             QDialogButtonBox* dlg;
+            LnF* lnf;
             
             private slots:
             

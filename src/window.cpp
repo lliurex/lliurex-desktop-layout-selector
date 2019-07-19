@@ -19,7 +19,6 @@
 
 #include "window.hpp"
 
-
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QPushButton>
@@ -32,11 +31,17 @@
 using namespace lliurex::dls;
 using namespace std;
 
+#include <vector>
+#include <utility>
+#include <algorithm>
+
 Window::Window() : QWidget()
 {
     QVBoxLayout* vbox = new QVBoxLayout();
     
-    vbox->addWidget(new QLabel("Aspecto visual"));
+    QLabel* label = new QLabel("Aspecto visual");
+    label->setStyleSheet("font: 18pt;");
+    vbox->addWidget(label);
     
     qmlWidget = new QQuickWidget();
     qmlWidget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
@@ -45,12 +50,28 @@ Window::Window() : QWidget()
     
     QVariantList args;
     
-    data.append(new LNFPackage("Default","/usr/share/plasma/look-and-feel/lliurex-desktop"));
-    data.append(new LNFPackage("Classic","/usr/share/plasma/look-and-feel/lliurex-desktop-classic"));
+    data.append(new LNFPackage("Default","lliurex-desktop"));
+    data.append(new LNFPackage("Classic","lliurex-desktop-classic"));
+    
+    lnf=new LnF();
+    
+    QString kcmTheme=lnf->getSelectedTheme();
+    qDebug()<<"current theme: "<<kcmTheme;
+    
+    int kcmThemeIndex=0;
+    
+    for (int n=0;n<data.count();n++) {
+        LNFPackage* package = static_cast<LNFPackage*>(data[n]);
+        
+        if (package->path==kcmTheme) {
+            kcmThemeIndex=n;
+            qDebug()<<"current index: "<<n;
+        }
+    }
     
     QQmlContext* ctxt = qmlWidget->rootContext();
     ctxt->setContextProperty("kcm", QVariant::fromValue(data));
-    ctxt->setContextProperty("kcm.selection",32);
+    ctxt->setContextProperty("kcmThemeIndex", QVariant::fromValue(kcmThemeIndex));
     
     qmlWidget->setClearColor(QColor(0x32,0xf9,0xf9));
     qmlWidget->setSource(QUrl(QStringLiteral("qrc:/main.qml")));
@@ -83,6 +104,8 @@ void Window::clicked(QAbstractButton* button)
             if (selector!=nullptr) {
                 QVariant value = selector->property("currentIndex");
                 qDebug()<<value;
+                
+                
             }
         }
         

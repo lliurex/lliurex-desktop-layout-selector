@@ -22,6 +22,10 @@ Rectangle {
         focus: true
         onCurrentItemChanged: console.log(packages.currentIndex + ' selected')
         
+        Component.onCompleted: {
+            packages.currentIndex=kcmThemeIndex
+        }
+        
         delegate: 
             Rectangle {
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -42,7 +46,7 @@ Rectangle {
                     id: preview
                     y: 10
                     anchors.horizontalCenter: parent.horizontalCenter
-                    source: "file:"+path+"/contents/previews/preview.png"
+                    source: "file:/usr/share/plasma/look-and-feel/"+path+"/contents/previews/preview.png"
                     
                 }
                 

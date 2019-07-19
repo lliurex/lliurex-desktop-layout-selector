@@ -6,9 +6,10 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 find_package(Qt5 REQUIRED COMPONENTS Widgets Core Quick QuickWidgets)
-find_package(KF5KCMUtils REQUIRED)
+find_package(KF5CoreAddons)
+#find_package(KF5KCMUtils REQUIRED)
 
-add_executable(lliurex-desktop-layout-selector main.cpp window.cpp ../rsrc/resources.qrc)
-target_link_libraries(lliurex-desktop-layout-selector Qt5::Widgets Qt5::Core Qt5::Quick Qt5::QuickWidgets  KF5::KCMUtils)
+add_executable(lliurex-desktop-layout-selector main.cpp window.cpp lnf.cpp ../rsrc/resources.qrc)
+target_link_libraries(lliurex-desktop-layout-selector Qt5::Widgets Qt5::Core Qt5::Quick Qt5::QuickWidgets KF5::CoreAddons)
 
 #install(TARGETS panel-design-manager RUNTIME DESTINATION bin)

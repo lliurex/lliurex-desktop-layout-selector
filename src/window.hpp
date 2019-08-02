@@ -20,7 +20,7 @@
 #ifndef LLIUREX_DLS_WINDOW
 #define LLIUREX_DLS_WINDOW
 
-#include "lnf.hpp"
+#include "lnfobject.hpp"
 
 #include <QWidget>
 #include <QQuickWidget>
@@ -30,30 +30,6 @@ namespace lliurex
 {
     namespace dls
     {
-        class LNFPackage : public QObject
-        {
-            Q_OBJECT
-
-            Q_PROPERTY(QString name MEMBER name NOTIFY onNameChanged)
-            Q_PROPERTY(QString path MEMBER path NOTIFY onPathChanged)
-            
-            signals:
-                
-            void onNameChanged();
-            void onPathChanged();
-                
-            public:
-            
-            QString name;
-            QString path;
-            
-            LNFPackage(QString name,QString path)
-            {
-                this->name=name;
-                this->path=path;
-            }
-        };
-        
         class Window: public QWidget
         {
             Q_OBJECT
@@ -62,11 +38,12 @@ namespace lliurex
             
             QQuickWidget* qmlWidget;
             QDialogButtonBox* dlg;
-            LnF* lnf;
+            LNF* lnf;
             
             private slots:
             
             void clicked(QAbstractButton* button);
+            void indexChanged();
             
             public:
             

@@ -17,35 +17,38 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef LLIUREX_DLS_PLUGIN
-#define LLIUREX_DLS_PLUGIN
+#include "lnfobject.hpp"
 
-#include <QString>
-#include <QObject>
+#include <QDebug>
 
-namespace lliurex
+using namespace lliurex::dls;
+
+LNF::LNF(QObject* parent)
 {
-    namespace dls
-    {
-        namespace kcm
-        {
-            class Plugin
-            {
-                private:
-                
-                QObject* plugin;
-                    
-                public:
-                    
-                Plugin();
-                ~Plugin();
-                
-                QString getSelectedTheme();
-                void setTheme(QString name);
-                
-            };
+    plugin = new kcm::Plugin();
+    
+    QString themeName=plugin->getSelectedTheme();
+    
+    qDebug()<<"current theme: "<<themeName;
+    
+    packages.append(new Package("Default","lliurex-desktop"));
+    packages.append(new Package("Classic","lliurex-desktop-classic"));
+    
+    index=0;
+    currentIndex=-1;
+    
+    for (int n=0;n<packages.count();n++) {
+        Package* package = static_cast<Package*>(packages[n]);
+        
+        if (package->getPath()==themeName) {
+            currentIndex=n;
+            index=currentIndex;
+            qDebug()<<"current index: "<<n;
         }
     }
 }
 
-#endif
+LNF::~LNF()
+{
+    delete plugin;
+}

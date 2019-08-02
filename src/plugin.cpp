@@ -17,19 +17,19 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "lnf.hpp"
+#include "plugin.hpp"
 
 #include <KPluginLoader>
 #include <KPluginFactory>
 #include <QDebug>
 
-#define KCM_PATH "/usr/lib/x86_64-linux-gnu/qt5/plugins/kcms/kcm_lookandfeel"
+#define KCM_PLUGIN_PATH "/usr/lib/x86_64-linux-gnu/qt5/plugins/kcms/kcm_lookandfeel"
 
-using namespace lliurex::dls;
+using namespace lliurex::dls::kcm;
 
-LnF::LnF()
+Plugin::Plugin()
 {
-    KPluginLoader* loader = new KPluginLoader(KCM_PATH);
+    KPluginLoader* loader = new KPluginLoader(KCM_PLUGIN_PATH);
     KPluginFactory* factory = loader->factory();
     
     if (factory) {
@@ -41,12 +41,17 @@ LnF::LnF()
     }
 }
 
-LnF::~LnF()
+Plugin::~Plugin()
 {
 }
 
-QString LnF::getSelectedTheme()
+QString Plugin::getSelectedTheme()
 {
     QVariant result = plugin->property("selectedPlugin");
     return result.value<QString>();
+}
+
+void Plugin::setTheme(QString name)
+{
+    //dummy right now
 }

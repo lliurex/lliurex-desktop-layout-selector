@@ -46,32 +46,11 @@ Window::Window() : QWidget()
     qmlWidget = new QQuickWidget();
     qmlWidget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     
-    QList<QObject*> data;
-    
-    QVariantList args;
-    
-    data.append(new LNFPackage("Default","lliurex-desktop"));
-    data.append(new LNFPackage("Classic","lliurex-desktop-classic"));
-    
-    lnf=new LnF();
-    
-    QString kcmTheme=lnf->getSelectedTheme();
-    qDebug()<<"current theme: "<<kcmTheme;
-    
-    int kcmThemeIndex=0;
-    
-    for (int n=0;n<data.count();n++) {
-        LNFPackage* package = static_cast<LNFPackage*>(data[n]);
-        
-        if (package->path==kcmTheme) {
-            kcmThemeIndex=n;
-            qDebug()<<"current index: "<<n;
-        }
-    }
-    
+    lnf = new LNF();
     QQmlContext* ctxt = qmlWidget->rootContext();
-    ctxt->setContextProperty("kcm", QVariant::fromValue(data));
-    ctxt->setContextProperty("kcmThemeIndex", QVariant::fromValue(kcmThemeIndex));
+    
+    connect(lnf, &LNF::indexChanged, this, &Window::indexChanged);
+    ctxt->setContextObject(lnf);
     
     qmlWidget->setClearColor(QColor(0x32,0xf9,0xf9));
     qmlWidget->setSource(QUrl(QStringLiteral("qrc:/main.qml")));
@@ -89,6 +68,12 @@ Window::Window() : QWidget()
 
 Window::~Window()
 {
+    delete lnf;
+}
+
+void Window::indexChanged()
+{
+    cout<<"You touch my tralala"<<endl;
 }
 
 void Window::clicked(QAbstractButton* button)

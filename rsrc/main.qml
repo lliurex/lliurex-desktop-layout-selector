@@ -18,12 +18,13 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         
         visible: true
-        model: kcm
+        model: lnfModel
         focus: true
         onCurrentItemChanged: console.log(packages.currentIndex + ' selected')
         
         Component.onCompleted: {
-            packages.currentIndex=kcmThemeIndex
+            packages.currentIndex=lnfCurrentIndex
+            console.log(lnfModel[0])
         }
         
         delegate: 
@@ -39,6 +40,7 @@ Rectangle {
                     onClicked: {
                         console.log("clicked on "+index)
                         packages.currentIndex=index
+                        lnfIndex=index
                     }
                   }
                 

@@ -57,22 +57,19 @@ namespace lliurex
             Q_OBJECT
             Q_PROPERTY(qint32 lnfCurrentIndex MEMBER currentIndex)
             Q_PROPERTY(qint32 lnfIndex MEMBER index NOTIFY indexChanged)
-            Q_PROPERTY(QList<QObject*> lnfModel MEMBER packages READ getModel NOTIFY modelChanged)
+            Q_PROPERTY(QList<QObject*> lnfModel MEMBER packages NOTIFY modelChanged)
 
             public:
             explicit LNF(QObject* parent = nullptr);
             ~LNF();
             
-            QList<QObject*> getModel()
-            {
-                return packages;
-            }
-
+            void setTheme(QString theme);
+            
             signals:
             void indexChanged();
             void modelChanged();
     
-            private:
+            public:
             kcm::Plugin* plugin;
             QList<QObject*> packages;
             

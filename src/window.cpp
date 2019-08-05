@@ -60,6 +60,8 @@ Window::Window() : QWidget()
     vbox->setAlignment(Qt::AlignHCenter);
     
     dlg = new QDialogButtonBox(QDialogButtonBox::Apply);
+    dlg->button(QDialogButtonBox::Apply)->setEnabled(false);
+    
     connect(dlg, &QDialogButtonBox::clicked, this, &Window::clicked);
     vbox->addWidget(dlg);
     
@@ -73,27 +75,17 @@ Window::~Window()
 
 void Window::indexChanged()
 {
-    cout<<"You touch my tralala"<<endl;
+    dlg->button(QDialogButtonBox::Apply)->setEnabled(true);
 }
 
 void Window::clicked(QAbstractButton* button)
 {
     if (dlg->buttonRole(button)==QDialogButtonBox::ApplyRole) {
-        clog<<"Apply"<<endl;
+        button->setEnabled(false);
         
-        QQuickItem* root = qmlWidget->rootObject();
-        
-        if (root!=nullptr) {
-            QQuickItem* selector = root->findChild<QQuickItem*>("lliurex.lnf.selector");
-            
-            if (selector!=nullptr) {
-                QVariant value = selector->property("currentIndex");
-                qDebug()<<value;
-                
-                
-            }
-        }
-        
+        Package* pkg = static_cast<Package*>(lnf->packages[lnf->index]);
+        lnf->setTheme(pkg->path);
+        qDebug()<<"using "<<pkg->path;
     }
 }
 

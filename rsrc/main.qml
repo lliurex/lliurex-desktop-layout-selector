@@ -20,14 +20,12 @@ Rectangle {
         visible: true
         model: lnfModel
         focus: true
-        onCurrentItemChanged: console.log(packages.currentIndex + ' selected')
         
         Component.onCompleted: {
             packages.currentIndex=lnfCurrentIndex
-            console.log(lnfModel[0])
         }
         
-        delegate: 
+        delegate:
             Rectangle {
                 anchors.horizontalCenter: parent.horizontalCenter
                 
@@ -38,7 +36,6 @@ Rectangle {
                 MouseArea {
                     anchors.fill: preview
                     onClicked: {
-                        console.log("clicked on "+index)
                         packages.currentIndex=index
                         lnfIndex=index
                     }
@@ -48,7 +45,7 @@ Rectangle {
                     id: preview
                     y: 10
                     anchors.horizontalCenter: parent.horizontalCenter
-                    source: "file:/usr/share/plasma/look-and-feel/"+path+"/contents/previews/preview.png"
+                    source: "file:/usr/share/plasma/look-and-feel/"+lnfModel[index].path+"/contents/previews/preview.png"
                     
                 }
                 
@@ -57,7 +54,7 @@ Rectangle {
                     anchors.margins: 5
                     anchors.horizontalCenter: preview.horizontalCenter
                     
-                    text: name
+                    text: lnfModel[index].name
                 }
             }
         

@@ -40,7 +40,7 @@ LNF::LNF(QObject* parent)
     for (int n=0;n<packages.count();n++) {
         Package* package = static_cast<Package*>(packages[n]);
         
-        if (package->getPath()==themeName) {
+        if (package->path==themeName) {
             currentIndex=n;
             index=currentIndex;
             qDebug()<<"current index: "<<n;
@@ -51,4 +51,9 @@ LNF::LNF(QObject* parent)
 LNF::~LNF()
 {
     delete plugin;
+}
+
+void LNF::setTheme(QString theme)
+{
+    plugin->setTheme(theme);
 }

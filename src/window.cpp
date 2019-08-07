@@ -84,8 +84,8 @@ void Window::clicked(QAbstractButton* button)
         button->setEnabled(false);
         
         Package* pkg = static_cast<Package*>(lnf->packages[lnf->index]);
-        lnf->setTheme(pkg->path);
         qDebug()<<"using "<<pkg->path;
+        lnf->setTheme(pkg->path);
     }
 }
 

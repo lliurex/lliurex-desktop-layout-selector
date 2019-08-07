@@ -53,5 +53,13 @@ QString Plugin::getSelectedTheme()
 
 void Plugin::setTheme(QString name)
 {
-    //dummy right now
+    
+    //QMetaObject::invokeMethod(plugin,"setResetDefaultLayout",Qt::QueuedConnection, Q_ARG(bool,true));
+    //QMetaObject::invokeMethod(plugin,"setSelectedPlugin",Qt::QueuedConnection, Q_ARG(QString,name));
+    //QMetaObject::invokeMethod(plugin,"save");
+    
+    plugin->setProperty("resetDefaultLayout",true);
+    plugin->setProperty("selectedPlugin",name);
+    QMetaObject::invokeMethod(plugin,"save");
+    
 }

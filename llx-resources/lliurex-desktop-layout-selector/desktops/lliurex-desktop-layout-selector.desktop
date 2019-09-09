@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=LliureX desktop layout
+Name[es]=Aspecto de escritorio de LliureX
+TryExec=/usr/bin/lliurex-desktop-layout-selector
+StartupNotify=true
+Exec=/usr/bin/lliurex-desktop-layout-selector
+Icon=preferences-desktop-theme
+Terminal=false
+Type=Application
+Categories=LliureX-Administration;

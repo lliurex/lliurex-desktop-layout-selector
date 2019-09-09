@@ -1,0 +1,22 @@
+# LliureX desktop selector.
+# Copyright (C) 2019 Enrique Medina Gremaldos
+# This file is distributed under the same license as the lliurex-desktop-layout-selector package.
+# Enrique Medina Gremaldos <quiqueiii@gmail.com>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: lliurex-desktop-layout-selector 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-09 16:26+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Enrique Medina Gremaldos <quiqueiii@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: window.cpp:46
+msgid "Visual theme"
+msgstr "Aspecto visual"

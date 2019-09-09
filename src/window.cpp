@@ -39,10 +39,12 @@ using namespace std;
 
 Window::Window() : QWidget()
 {
+    setWindowIcon(QIcon::fromTheme("preferences-desktop-theme"));
+    setWindowTitle("LliureX desktop selector");
     QVBoxLayout* vbox = new QVBoxLayout();
     
     QLabel* label = new QLabel(i18n("Visual theme"));
-    label->setStyleSheet("font: 18pt;");
+    label->setStyleSheet("font: 16pt;");
     vbox->addWidget(label);
     
     qmlWidget = new QQuickWidget();

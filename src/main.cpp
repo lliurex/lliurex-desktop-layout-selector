@@ -19,12 +19,16 @@
 
 #include "window.hpp"
 
+#include <klocalizedstring.h>
+
 #include <QApplication>
 
 using namespace std;
 
 int main(int argc,char* argv[])
 {
+    
+    KLocalizedString::setApplicationDomain("lliurex-desktop-layout-selector");
     QApplication a(argc,argv);
     
     lliurex::dls::Window window;

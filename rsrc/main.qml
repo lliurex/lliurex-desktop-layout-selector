@@ -4,8 +4,8 @@ import QtQuick.Controls 2.0
 Rectangle {
     id: base
     color: "#f9f9f9"
-    border.width:2
-    border.color: "#646464"
+    border.width:1
+    border.color: "#bdc3c7"
     
     width: 600
     height: 500

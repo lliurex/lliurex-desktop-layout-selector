@@ -19,6 +19,8 @@
 
 #include "window.hpp"
 
+#include <klocalizedstring.h>
+
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QPushButton>
@@ -39,7 +41,7 @@ Window::Window() : QWidget()
 {
     QVBoxLayout* vbox = new QVBoxLayout();
     
-    QLabel* label = new QLabel("Aspecto visual");
+    QLabel* label = new QLabel(i18n("Visual theme"));
     label->setStyleSheet("font: 18pt;");
     vbox->addWidget(label);
     

@@ -13,4 +13,4 @@ find_package(KF5I18n REQUIRED)
 add_executable(lliurex-desktop-layout-selector main.cpp window.cpp plugin.cpp lnfobject.cpp ../rsrc/resources.qrc)
 target_link_libraries(lliurex-desktop-layout-selector Qt5::Widgets Qt5::Core Qt5::Quick Qt5::QuickWidgets KF5::CoreAddons KF5::I18n)
 
-#install(TARGETS panel-design-manager RUNTIME DESTINATION bin)
+install(TARGETS lliurex-desktop-layout-selector RUNTIME DESTINATION bin)

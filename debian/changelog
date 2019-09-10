@@ -1,3 +1,9 @@
+lliurex-desktop-layout-selector (1.0.0.1) bionic; urgency=medium
+
+  * Fixed build-deps
+
+ -- Enrique Medina Gremaldos <quiqueiii@gmail.com>  Tue, 10 Sep 2019 12:55:33 +0200
+
 lliurex-desktop-layout-selector (1.0.0.0) bionic; urgency=medium
 
   * Master tag: 1691f0cc479ec7d7080cc0d738a17df81b79d05d

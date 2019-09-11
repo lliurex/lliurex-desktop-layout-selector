@@ -1,3 +1,10 @@
+lliurex-desktop-layout-selector (1.0.0.2) bionic; urgency=medium
+
+  * Master tag: 838c36c89977886273f01771c3d40b8971e4b431
+  * Zero center support
+
+ -- Enrique Medina Gremaldos <quiqueiii@gmail.com>  Wed, 11 Sep 2019 09:22:55 +0200
+
 lliurex-desktop-layout-selector (1.0.0.1) bionic; urgency=medium
 
   * Fixed build-deps

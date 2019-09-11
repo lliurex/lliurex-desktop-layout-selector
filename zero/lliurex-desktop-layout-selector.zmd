@@ -1,0 +1,5 @@
+#!/bin/bash
+
+/usr/bin/lliurex-desktop-layout-selector
+
+exit 0

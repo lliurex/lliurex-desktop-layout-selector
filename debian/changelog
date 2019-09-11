@@ -1,3 +1,10 @@
+lliurex-desktop-layout-selector (1.0.1.0) bionic; urgency=medium
+
+  * Master tag: 9f3ff10777d217bcd4e660c67a0e61a21f543c00
+  * Fixed translations and zero support
+
+ -- Enrique Medina Gremaldos <quiqueiii@gmail.com>  Wed, 11 Sep 2019 12:02:25 +0200
+
 lliurex-desktop-layout-selector (1.0.0.2) bionic; urgency=medium
 
   * Master tag: 838c36c89977886273f01771c3d40b8971e4b431

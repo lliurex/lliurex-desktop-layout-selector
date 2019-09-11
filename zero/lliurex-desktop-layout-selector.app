@@ -6,6 +6,6 @@ Comment[es]=Selecciona distintos estilos de escritorio LliureX
 
 Icon=lliurex-desktop-layout-selector
 
-Category=Settings
+Category=Configuration
 ScriptPath=lliurex-desktop-layout-selector.zmd
 Groups=*

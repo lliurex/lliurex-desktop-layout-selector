@@ -19,7 +19,7 @@
 
 #include "window.hpp"
 
-#include <klocalizedstring.h>
+#include <KLocalizedString>
 
 #include <QApplication>
 

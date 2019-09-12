@@ -28,8 +28,26 @@ using namespace std;
 int main(int argc,char* argv[])
 {
     
-    KLocalizedString::setApplicationDomain("lliurex-desktop-layout-selector");
     QApplication a(argc,argv);
+    
+    KLocalizedString::setApplicationDomain("lliurex-desktop-layout-selector");
+    
+    QSet<QString> available = KLocalizedString::availableApplicationTranslations();
+    
+    qDebug()<<"translation packages:";
+    for (QString mo:available) {
+        qDebug()<<"* "<<mo;
+    }
+    
+    QStringList languages = KLocalizedString::languages();
+    
+    qDebug()<<"languages:";
+    for (QString lang:languages) {
+        qDebug()<<"* "<<lang;
+    }
+    
+    QString test="Visual theme";
+    qDebug()<<"test:"<<test<<"->"<<i18n("Visual theme");
     
     lliurex::dls::Window window;
     window.show();

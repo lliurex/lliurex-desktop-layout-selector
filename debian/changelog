@@ -1,3 +1,10 @@
+lliurex-desktop-layout-selector (1.0.2.0) bionic; urgency=medium
+
+  * Master tag: 9a89146d5c8f637b928eef0abea57c7cd2ab2913
+  * Fixed bad header translation
+
+ -- Enrique Medina Gremaldos <quiqueiii@gmail.com>  Thu, 12 Sep 2019 10:05:06 +0200
+
 lliurex-desktop-layout-selector (1.0.1.0) bionic; urgency=medium
 
   * Master tag: 9f3ff10777d217bcd4e660c67a0e61a21f543c00

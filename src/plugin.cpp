@@ -21,20 +21,34 @@
 
 #include <KPluginLoader>
 #include <KPluginFactory>
+#include <QStandardItemModel>
+#include <QMetaProperty>
+#include <QMetaObject>
 #include <QDebug>
-
-#define KCM_PLUGIN_PATH "/usr/lib/x86_64-linux-gnu/qt5/plugins/kcms/kcm_lookandfeel"
 
 using namespace lliurex::dls::kcm;
 
 Plugin::Plugin()
 {
-    KPluginLoader* loader = new KPluginLoader(KCM_PLUGIN_PATH);
+    QString path;
+    path = KPluginLoader::findPlugin("kcms/kcm_lookandfeel");
+    
+    KPluginLoader* loader = new KPluginLoader(path);
     KPluginFactory* factory = loader->factory();
     
     if (factory) {
         plugin = factory->create<QObject>();
         QMetaObject::invokeMethod(plugin,"load");
+        
+        QVariant value = plugin->property("lookAndFeelModel");
+        QStandardItemModel* model = value.value<QStandardItemModel* >();
+        
+        for (int n=0;n<model->rowCount();n++) {
+            for (int m=0;m<model->columnCount();m++) {
+                QStandardItem* item = model->item(n,m);
+                qDebug()<<"* "<<item->text();
+            }
+        }
     }
     else {
         qWarning()<<"Failed to load KCM Look and feel plugin";
@@ -47,19 +61,22 @@ Plugin::~Plugin()
 
 QString Plugin::getSelectedTheme()
 {
-    QVariant result = plugin->property("selectedPlugin");
-    return result.value<QString>();
+    QVariant value = plugin->property("lookAndFeelSettings");
+    QObject* obj=value.value<QObject*>();
+    
+    value = obj->property("lookAndFeelPackage");
+    return value.value<QString>();
 }
 
 void Plugin::setTheme(QString name)
 {
-    
-    //QMetaObject::invokeMethod(plugin,"setResetDefaultLayout",Qt::QueuedConnection, Q_ARG(bool,true));
-    //QMetaObject::invokeMethod(plugin,"setSelectedPlugin",Qt::QueuedConnection, Q_ARG(QString,name));
-    //QMetaObject::invokeMethod(plugin,"save");
-    
     plugin->setProperty("resetDefaultLayout",true);
-    plugin->setProperty("selectedPlugin",name);
+    
+    QVariant value = plugin->property("lookAndFeelSettings");
+    QObject* obj=value.value<QObject*>();
+    
+    obj->setProperty("lookAndFeelPackage",name);
+    
     QMetaObject::invokeMethod(plugin,"save");
     
 }

@@ -2,6 +2,10 @@
 Encoding=UTF-8
 Name=LliureX desktop layout
 Name[es]=Aspecto de escritorio de LliureX
+Name[ca_ES]=Aspecte d'escriptori de LliureX
+Comment=Switch between classic and modern layout
+Comment[es]=Cambia entre la disposición clásica o la moderna
+Comment[ca_ES]=Tria la disposició clàsica o moderna per a l'escriptori
 TryExec=/usr/bin/lliurex-desktop-layout-selector
 StartupNotify=true
 Exec=/usr/bin/lliurex-desktop-layout-selector

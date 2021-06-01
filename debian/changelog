@@ -1,3 +1,9 @@
+lliurex-desktop-layout-selector (1.2.0.0) focal; urgency=medium
+
+  * Updated lnf package paths
+
+ -- Enrique Medina Gremaldos <quiqueiii@gmail.com>  Tue, 01 Jun 2021 16:27:45 +0200
+
 lliurex-desktop-layout-selector (1.1.0.1) bionic; urgency=medium
 
   * Fix metadata package

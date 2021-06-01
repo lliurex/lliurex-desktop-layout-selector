@@ -31,8 +31,8 @@ LNF::LNF(QObject* parent)
     
     qDebug()<<"current theme: "<<themeName;
     
-    packages.append(new Package("Default","lliurex-desktop"));
-    packages.append(new Package("Classic","lliurex-desktop-classic"));
+    packages.append(new Package("Default","net.lliurex.default"));
+    packages.append(new Package("Classic","net.lliurex.classic"));
     
     index=0;
     currentIndex=-1;

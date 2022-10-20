@@ -12,4 +12,5 @@ Exec=/usr/bin/lliurex-desktop-layout-selector
 Icon=preferences-desktop-theme
 Terminal=false
 Type=Application
+NoDisplay=true
 Categories=LliureX-Administration;
